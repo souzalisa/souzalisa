@@ -9,7 +9,7 @@ Esse arquivo realiza o armazenamento de encomendas realizadas no site e o status
 
 Armazena as informações dos clientes que encomendaram o produto ou serviço do trabalhador, como nome e e-mail:
 
-    /*
+    
     
     CREATE TABLE clientes (
  
@@ -20,14 +20,14 @@ Armazena as informações dos clientes que encomendaram o produto ou serviço do
     email VARCHAR(100) UNIQUE
     
     ); 
-    */
+    
 
 
 ### -- Tabela categorias
 
 Organiza os tipos de artes oferecidos para os clientes:
 
-    /*
+    
     
     CREATE TABLE categorias (
         
@@ -35,14 +35,14 @@ Organiza os tipos de artes oferecidos para os clientes:
     
     nome VARCHAR(50) NOT NULL UNIQUE );
     
-    */
+    
 
 
 ### —- Tabela encomendas
 
 Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e entregar o produto final para o cliente:
 
-    /* 
+    
     
     CREATE TABLE encomendas (
     
@@ -58,13 +58,13 @@ Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e
     
     prazo DATE NOT NULL,
     
-    */
+    
 
 ### -- Status e Integridade
 
 Status da encomenda que só é permitido nessas condições (aberto, em andamento, concluído e cancelado), valor em dinheiro e estilo que o cliente deseja:
 
-    /*
+    
     
     status ENUM('aberto', 'em_andamento', 'concluido', 'cancelado') DEFAULT 'aberto', 
     
@@ -72,11 +72,11 @@ Status da encomenda que só é permitido nessas condições (aberto, em andament
     
     estilo VARCHAR(50),
     
-    */
+    
 
 Integridade (bloqueia dados inexistentes utilizando FOREIGN KEY) e Performance (otimiza a velocidade de carregamento do site):
 
-    /* 
+    
     
     FOREIGN KEY (cliente_id) REFERENCES clientes(id),
     
