@@ -17,10 +17,7 @@ Consulta ao Banco de Dados, buscando registro na tabela encomendas utilizando fi
 
 
     if (!empty($_GET['categoria'])) {
-
     $categoria = $_GET['categoria'];
-
     $sql = $sql . " AND categoria = '$categoria'";
-
     }
  
