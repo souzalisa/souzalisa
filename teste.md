@@ -16,11 +16,11 @@ quadro encomendas sprint 2 v3108/quadro-encomendas/api/catalogo.php
 Consulta ao Banco de Dados, buscando registro na tabela encomendas utilizando filtros via método GET.
 
 
-if (!empty($_GET['categoria'])) {
+    if (!empty($_GET['categoria'])) {
 
     $categoria = $_GET['categoria'];
 
     $sql = $sql . " AND categoria = '$categoria'";
 
-}
+    }
  
