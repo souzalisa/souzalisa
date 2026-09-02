@@ -7,8 +7,10 @@ Essa pasta contém a permissão de somente o administrador adicionar uma categor
 
 ### -- Tabela categorias
 
+
 Armazena o nome e a descrição de uma categoria publicada por um admin.
     
+
     
     CREATE TABLE IF NOT EXISTS categorias (
 
@@ -25,6 +27,7 @@ Armazena o nome e a descrição de uma categoria publicada por um admin.
 ### -- Tabela portfólio
 
 Armazena os dados do artista e sua obra publicada em seu perfil
+
 
     
     CREATE TABLE IF NOT EXISTS portfolio_itens (
@@ -47,6 +50,7 @@ Armazena os dados do artista e sua obra publicada em seu perfil
 Guarda o tipo de conteúdo publicado no portfólio do artista
 
 
+
     tipo_midia ENUM('imagem', 'video', 'audio') NOT NULL,
 
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -59,11 +63,13 @@ Guarda o tipo de conteúdo publicado no portfólio do artista
 
 
 
+
 ##  Categoria e Portfólio
 
 
 
 Cadastrar nova categoria e nova obra no portfólio do usuário.
+
 
 
 ### SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
