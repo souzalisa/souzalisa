@@ -1,6 +1,8 @@
 ## comunicacao-e-presenca
 
+
 Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo da rede social do usuário.
+
 
 
 ## Chat de mensagens
@@ -9,11 +11,14 @@ Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo d
 ### comunicacao-e-presenca/api/mensagens.php
 
 
-**Lista de conversas ordenadas por mais recente**
+* **Lista de conversas ordenadas por mais recente;**
+  
 
-**Histórico de conversas**
+* **Histórico de conversas;**
+  
 
-**Envio de mensagens**
+* **Envio de mensagens;**
+  
 
 
 ### comunicacao-e-presenca/pages/chat.php
@@ -24,23 +29,24 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
 **Exemplo (selecionando uma conversa para enviar uma mensagem):**
 
+
             <section class="chat-painel">
 
-                <div class="chat-painel__cabecalho" id="cabecalho-conversa">
+                        <div class="chat-painel__cabecalho" id="cabecalho-conversa">
 
-                    <span class="estado-vazio">Selecione uma conversa ou busque alguém para começar.</span>
+                                    <span class="estado-vazio">Selecione uma conversa ou busque alguém para começar.</span>
 
-                </div>
+                        </div>
 
-                <div class="chat-mensagens" id="lista-mensagens"></div>
+                        <div class="chat-mensagens" id="lista-mensagens"></div>
 
-                <form class="chat-form" id="form-enviar-mensagem">
+                        <form class="chat-form" id="form-enviar-mensagem">
 
-                    <input type="text" id="campo-mensagem" placeholder="Escreva uma mensagem..." maxlength="1000" disabled>
+                                    <input type="text" id="campo-mensagem" placeholder="Escreva uma mensagem..." maxlength="1000" disabled>
 
-                    <button type="submit" class="botao botao--primario" id="btn-enviar-mensagem" disabled>Enviar</button>
+                                    <button type="submit" class="botao botao--primario" id="btn-enviar-mensagem" disabled>Enviar</button>
 
-                </form>
+                        </form>
 
             </section>
 
@@ -52,15 +58,15 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 ### comunicacao-e-presenca/api/redes_sociais.php
 
 
-**Lista de redes sociais**
+* **Lista de redes sociais;**
  
-**Vínculo**
+* **Vínculo;**
 
-**Atualização de link**
+* **Atualização de link;**
 
-**Remoção do vínculo**
+* **Remoção do vínculo;**
 
-**Validação das redes sociais do usuário**
+* **Validação das redes sociais do usuário;**
 
 
 ### comunicacao-e-presenca/pages/perfil.php
@@ -71,15 +77,15 @@ Tela Front-End do perfil do usuário com formulário adicionando uma rede social
 
 **Exemplo:**
 
-                  <form id="form-rede" class="perfil-form-rede">
+            <form id="form-rede" class="perfil-form-rede">
 
                         <select id="rede-plataforma">
 
-                            <?php foreach ($rotulosPlataforma as $valor => $rotulo): ?>
+                                    <?php foreach ($rotulosPlataforma as $valor => $rotulo): ?>
 
-                                <option value="<?= $valor ?>"><?= $rotulo ?></option>
+                                                <option value="<?= $valor ?>"><?= $rotulo ?></option>
 
-                            <?php endforeach; ?>
+                                    <?php endforeach; ?>
 
                         </select>
 
@@ -87,7 +93,7 @@ Tela Front-End do perfil do usuário com formulário adicionando uma rede social
 
                         <button type="submit" class="botao botao--primario">Adicionar</button>
 
-                    </form>           
+            </form>           
 
 
 
