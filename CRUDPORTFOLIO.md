@@ -70,7 +70,7 @@ Guarda o tipo de conteúdo publicado no portfólio do artista
 
 Cadastrar nova categoria e nova obra no portfólio do usuário.
 
-
+### CRUD_CATEGORIAS_PORTFOLIO/pages/categorias/index.php
 
 ### SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
 
@@ -86,6 +86,7 @@ Cadastrar nova categoria e nova obra no portfólio do usuário.
     		<?php endif; ?>
     </div>
 
+### CRUD_CATEGORIAS_PORTFOLIO/pages/portfolio/index.php
 
 ### ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
 
