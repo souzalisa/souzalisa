@@ -18,8 +18,9 @@ Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo d
 * **Histórico de conversas;**
   
 
-* **Envio de mensagens;
+* **Envio de mensagens;**
 
+<br>
 
 **comunicacao-e-presenca/pages/chat.php**
 
