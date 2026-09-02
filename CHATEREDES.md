@@ -23,6 +23,7 @@ Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo d
 
 **comunicacao-e-presenca/pages/chat.php**
 
+<br>
 
 Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
