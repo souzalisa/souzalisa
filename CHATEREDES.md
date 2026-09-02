@@ -8,7 +8,8 @@ Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo d
 ## Chat de mensagens
 
 
-### comunicacao-e-presenca/api/mensagens.php
+**comunicacao-e-presenca/api/mensagens.php**
+
 <br>
 
 * **Lista de conversas ordenadas por mais recente;**
@@ -17,17 +18,15 @@ Foi realizado dentro dessa pasta, a criação de chat de mensagem e o vínculo d
 * **Histórico de conversas;**
   
 
-* **Envio de mensagens;**
-  
-<br>
+* **Envio de mensagens;
 
-### comunicacao-e-presenca/pages/chat.php
 
-<br>
+**comunicacao-e-presenca/pages/chat.php**
+
 
 Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
-<br>
+
 
 **Exemplo (selecionando uma conversa para enviar uma mensagem):**
 
@@ -52,15 +51,15 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
             </section>
 
-<br>
+
 
 ## Redes sociais
 
-<br> 
 
-### comunicacao-e-presenca/api/redes_sociais.php
 
-<br>
+**comunicacao-e-presenca/api/redes_sociais.php**
+
+
 
 * **Lista de redes sociais;**
  
@@ -72,15 +71,14 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
 * **Validação das redes sociais do usuário;**
 
-<br>
 
-### comunicacao-e-presenca/pages/perfil.php
 
-<br>
+**comunicacao-e-presenca/pages/perfil.php**
+
+
 
 Tela Front-End do perfil do usuário com formulário adicionando uma rede social.
 
-<br>
 
 **Exemplo:**
 
