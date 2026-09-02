@@ -1,14 +1,13 @@
 ## CRUD_CATEGORIAS_PORTFOLIO
 
-Esse arquivo realiza o armazenamento de encomendas realizadas no site e o status de disponibilidade no Banco de Dados MySQL.
+Essa pasta contém a permissão de somente o administrador adicionar uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
 
 ## Estrutura do Banco de Dados
 
 
 ### -- Tabela categorias
 
-Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e entregar o produto final para o cliente:
-
+Armazena o nome e a descrição de uma categoria publicada por um admin.
     
     
     CREATE TABLE IF NOT EXISTS categorias (
@@ -25,7 +24,7 @@ Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e
 
 ### -- Tabela portfólio
 
-Status da encomenda que só é permitido nessas condições (aberto, em andamento, concluído e cancelado), valor em dinheiro e estilo que o cliente deseja:
+Armazena os dados do artista e sua obra publicada em seu perfil
 
     
     CREATE TABLE IF NOT EXISTS portfolio_itens (
@@ -45,6 +44,9 @@ Status da encomenda que só é permitido nessas condições (aberto, em andament
     
 ### -- Tipo de mídia
 
+Guarda o tipo de conteúdo publicado no portfólio do artista
+
+
     tipo_midia ENUM('imagem', 'video', 'audio') NOT NULL,
 
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -60,11 +62,12 @@ Status da encomenda que só é permitido nessas condições (aberto, em andament
 ##  Categoria e Portfólio
 
 
-CRUD_CATEGORIAS_PORTFOLIO/pages/categorias/index.php
 
 Cadastrar nova categoria e nova obra no portfólio do usuário.
 
+
 ### SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
+
 
     <div class="cabecalho-pagina">
 
@@ -79,6 +82,7 @@ Cadastrar nova categoria e nova obra no portfólio do usuário.
 
 
 ### ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
+
 
     <div class="cabecalho-pagina">
 
