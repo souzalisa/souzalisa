@@ -61,7 +61,7 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
 **comunicacao-e-presenca/api/redes_sociais.php**
 
-
+<br>
 
 * **Lista de redes sociais;**
  
@@ -73,7 +73,7 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
 * **Validação das redes sociais do usuário;**
 
-
+<br>
 
 **comunicacao-e-presenca/pages/perfil.php**
 
