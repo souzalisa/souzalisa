@@ -72,7 +72,7 @@ Cadastrar nova categoria e nova obra no portfólio do usuário.
 
 
 
-#### SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
+### SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
 
 
     <div class="cabecalho-pagina">
@@ -87,7 +87,7 @@ Cadastrar nova categoria e nova obra no portfólio do usuário.
     </div>
 
 
-#### ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
+### ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
 
 
     <div class="cabecalho-pagina">
