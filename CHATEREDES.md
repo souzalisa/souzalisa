@@ -77,7 +77,7 @@ Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
 
 **comunicacao-e-presenca/pages/perfil.php**
 
-
+<br>
 
 Tela Front-End do perfil do usuário com formulário adicionando uma rede social.
 
