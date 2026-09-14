@@ -99,3 +99,42 @@ O usuário consegue logar se colocar a senha certa
 
     	echo json_encode(['sucesso' => true, 'mensagem' => 'Autenticado com sucesso.']);
 
+## “api/orcamentos.php”
+
+**Restrição de dois orçamentos idênticos**
+
+Verifica se há um orçamento duplicado antes de solicitar um novo
+
+	$sqlDuplicado = 'SELECT id FROM orcamentos
+                     WHERE contratador_id = :contratador_id
+                       AND artista_id = :artista_id
+                       AND status_orcamento = "pendente"
+                       AND (
+                           LOWER(TRIM(escopo)) = LOWER(TRIM(:escopo))
+                           OR (:encomenda_id IS NOT NULL AND encomenda_id = :encomenda_id_check)
+                       )
+                     LIMIT 1';
+    $stmtDuplicado = $pdo->prepare($sqlDuplicado);
+    $stmtDuplicado->execute([
+        'contratador_id'     => $usuarioLogado['id_usuario'],
+        'artista_id'         => $artistaId,
+        'escopo'             => $escopo,
+        'encomenda_id'       => $encomendaId,
+        'encomenda_id_check' => $encomendaId,
+    ]);
+
+
+## “api/encomendas.php”
+
+Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar, caso já tenha um, a mensagem irá mostrar que não foi possível concluir a ação.
+
+	$stmtOrc = $pdo->prepare(
+        'SELECT id FROM orcamentos WHERE encomenda_id = :encomenda_id AND status_orcamento = "aceito" LIMIT 1'
+	);
+	$stmtOrc->execute(['encomenda_id' => $id]);
+	if ($stmtOrc->fetch()) {
+        respostaJson([
+       	 'sucesso' => false,
+       	 'mensagem' => 'Não é possível alterar ou cancelar esta encomenda, pois ela já possui um orçamento aceito vinculado.'
+        ], 409);
+	}
