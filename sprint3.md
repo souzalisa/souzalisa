@@ -147,7 +147,7 @@ Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar,
        	 'mensagem' => 'Não é possível alterar ou cancelar esta encomenda, pois ela já possui um orçamento aceito vinculado.'
         ], 409);
     }
-\\
+
 # Permissões Cruzadas
 
 ## “api/categorias.php”
