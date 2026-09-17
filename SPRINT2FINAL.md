@@ -19,8 +19,6 @@ SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
     </div>
 
 
-
-
 ## “pages/portfolio/index.php”
 
  ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
@@ -50,26 +48,6 @@ Essa página permite que o cliente envie e verifique seus pedidos de orçamento 
 ## “pages/dashboard/creator/orcamentos.php”
 
 Já nessa página, no painel do criador, ele tem acesso aos orçamentos recebidos, seu portfólio e suas comissões, podendo aceitar ou recusar pedidos enviados por contratadores.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Comunicação e presença
@@ -153,25 +131,10 @@ Tela Front-End do perfil do usuário com formulário adicionando uma rede social
             </form>           
 
 
-
-
-
-
-
-
 # Quadro encomendas
 
 Esse arquivo realiza o armazenamento de encomendas realizadas no site e o status de disponibilidade no Banco de Dados MySQL.
 
-## Front-End
-
-#### “public/catalogo.html”
-
-
-Estrutura da página do catálogo de artistas contendo quadro de encomendas (com link para o feed) e filtros avançados (ordenar por mais recentes, menor preço e maior preço).
-
-
-## Back-End
 
 #### “api/catalogo.php”
 
@@ -186,18 +149,6 @@ Consulta ao Banco de Dados, buscando registro na tabela encomendas utilizando fi
     $sql = $sql . " AND categoria = '$categoria'";
     
     }
- 
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Estrutura do Banco de Dados
