@@ -147,18 +147,96 @@ Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar,
        	 'mensagem' => 'Não é possível alterar ou cancelar esta encomenda, pois ela já possui um orçamento aceito vinculado.'
         ], 409);
     }
-
+\\
 # Permissões Cruzadas
 
 ## “api/categorias.php”
 
+Para excluir uma categoria, somente o administrador tem a permissão:
+
+	function tratarDelete(PDO $pdo): void
+	{
+    		exigirTipo('admin');
+
+   	 	if (!isset($_GET['id'])) {
+        			respostaJson(['sucesso' => false, 'mensagem' => 'Informe o id da categoria na URL.'], 400);
+    		}
+
+   		 $id = (int) $_GET['id'];
+
+
+Caso haja algum vínculo de portfólio ou encomendas na categoria, a exclusão é bloqueada retornando uma mensagem:
+
+		if ($totalObras > 0 || $totalEncomendas > 0) {
+        		respostaJson([
+            		'sucesso' => false,
+           		'mensagem' => 'Não é possível excluir esta categoria: existem '
+            		    	. $totalObras . ' obra(s) de portfólio e ' . $totalEncomendas
+                			. ' encomenda(s) vinculadas a ela.',
+        		], 409);
+    	}
+
+Se não houver vínculo, a exclusão é realizada com sucesso:
+
+	$stmt = $pdo->prepare('DELETE FROM categorias WHERE id = :id');
+    	$stmt->execute(['id' => $id]);
+
+    	respostaJson(['sucesso' => true, 'mensagem' => 'Categoria excluída com sucesso.']);
+	}
 
 
 ## “api/portfolio.php”
 
+Verifica se a obra realmente existe:
+
+
+	function buscarItemDoArtista(PDO $pdo, int $id, int $artistaId): array
+	{
+   		 $stmt = $pdo->prepare('SELECT * FROM portfolio_itens WHERE id = :id');
+ 		 $stmt->execute(['id' => $id]);
+   		 $item = $stmt->fetch();
+
+    		if (!$item) {
+        		respostaJson(['sucesso' => false, 'mensagem' => 'Obra não encontrada.'], 404);
+   		 	}
+
+
+
+Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que altere a arte de outro:
+
+
+
+			if ((int) $item['artista'] !== $artistaId) {
+        			respostaJson(['sucesso' => false, 'mensagem' => 'Essa obra não pertence a você.'], 403);
+    		}
+
+   		 return $item;
+	}
+
+
 ## “api/redes_sociais.php”
+
+Caso a rede social não exista ou se não for do mesmo usuário, também retornará a mensagem:
+
+	if (!$rede) {
+        		respostaJson(['sucesso' => false, 'mensagem' => 'Rede social não encontrada.'], 404);
+    	}
+
+   	 if ((int) $rede['usuario_id'] !== $usuarioId) {
+       		 respostaJson(['sucesso' => false, 'mensagem' => 'Essa rede social não pertence a você.'], 403);
+    	}
+
 
 ## “api/mensagens.php”
 
+Não permite que o usuário mande mensagem para ele mesmo e só será possível enviar a mensagem se conter um texto ou um anexo:
+
+		if ($destinatarioId === $usuarioId) {
+        		respostaJson(['sucesso' => false, 'mensagem' => 'Não é possível enviar mensagem para si mesmo.'], 422);
+   	 	}
+
+    	if ($conteudo === '' && $anexo === '') {
+        		respostaJson(['sucesso' => false, 'mensagem' => 'A mensagem precisa ter um texto ou um anexo.'], 422);
+   	 	}
 
 
