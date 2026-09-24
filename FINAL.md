@@ -29,19 +29,19 @@ Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de 
 
 *“api/usuarios.php”*
 
-Busca de usuários;
-
-Cadastro de usuários;
-
-Atualizar usuários;
-
-Suspensão de usuários;
-
-Exclusão de usuários.
+	Busca de usuários;
+	
+	Cadastro de usuários;
+	
+	Atualizar usuários;
+	
+	Suspensão de usuários;
+	
+	Exclusão de usuários.
 
 ## LOGIN;
 
-*“auth/login.php”*
+### *“auth/login.php”*
 
 Foi acrescentado o acesso e bloqueio de conta do usuário. Se o e-mail ou a senha estiverem incorretos, aparecerá uma mensagem de erro e o usuário poderá tentar logar novamente apenas 5 vezes, caso ultrapasse disso, sua conta ficará bloqueada por 15 minutos.
 
@@ -51,54 +51,54 @@ Processamento dos dados de e-mail e senha enviados pelo usuário;
 
 Não aceita campos de e-mail e senha vazios.
 
-Impedir que o usuário acesse a conta com: 
+Impede que o usuário acesse a conta com: 
 
-* E-mail e senha incorretos;
-
-* Conta inativa;
-
-* Conta suspensa;
-
-* Conta bloqueada, exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
+	* E-mail e senha incorretos;
 	
-* O usuário conseguirá logar se preencher o e-mail e senha corretamente.
+	* Conta inativa;
+	
+	* Conta suspensa;
+	
+	* Conta bloqueada, exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
+		
+	* O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
-*“pages/redefinir-senha.php”*
+### *“pages/redefinir-senha.php”*
 
 (???)
 
 
 ## DASHBOARD;
 
-*“private/dashboard”*
+### *“private/dashboard”*
 
 Exibição do painel de acordo com cada tipo de usuário:
 
-Clientes (Card mostrando os pedidos que estão abertos);
-
-Artistas (Comissões pendentes e vagas disponíveis);
-
-Administrador (Quantidade de usuários cadastrados e denúncias abertas);
+	Clientes (Card mostrando os pedidos que estão abertos);
+	
+	Artistas (Comissões pendentes e vagas disponíveis);
+	
+	Administrador (Quantidade de usuários cadastrados e denúncias abertas);
 
 
 ## PERMISSÕES;
 
 Foi realizada a permissão de somente o administrador adicionar, remover uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
 
-*“pages/categorias/index.php”*
+### *“pages/categorias/index.php”*
 
 Somente o administrador consegue publicar uma nova categoria;
 
-*“pages/portfolio/index.php”*
+### *“pages/portfolio/index.php”*
 
 Artista acrescenta uma obra no seu portfólio;
 
-*“api/portfolio.php”*
+### *“api/portfolio.php”*
 
 Verifica se a obra realmente existe;
 Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que um artista altere a arte de outro.
 
-*“api/mensagens.php”*
+### *“api/mensagens.php”*
 
 Não permite que o usuário mande mensagem para ele mesmo e somente será possível enviar a mensagem se conter um texto ou um anexo.
 
@@ -107,15 +107,15 @@ Não permite que o usuário mande mensagem para ele mesmo e somente será possí
 Orçamento entre o artista e o cliente, controlando desde o pedido inicial até a entrega final.
 
 
-*“pages/dashboard/client/orcamentos.php”*
+### *“pages/dashboard/client/orcamentos.php”*
 
 Essa página permite que o cliente envie e verifique seus pedidos de orçamento para os artistas, descrevendo o que deseja.
 
-*“pages/dashboard/creator/orcamentos.php”*
+### *“pages/dashboard/creator/orcamentos.php”*
 
 Já nessa página, no painel do criador, ele tem acesso aos orçamentos recebidos, seu portfólio e suas comissões, podendo aceitar ou recusar pedidos enviados por contratadores.
 
-*“api/orcamentos.php”*
+### *“api/orcamentos.php”*
 
 **Restrição de dois orçamentos idênticos**
 
