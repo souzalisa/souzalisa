@@ -65,7 +65,10 @@ O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
 ### *“pages/redefinir-senha.php”*
 
-(???)
+	Não permite redefinir senha sem ter uma conta criada;
+	Mínimo de caracteres para criar uma senha;
+	Confere se as senhas coincidem;
+	Alteração bem-sucedida da senha, voltando para o formulário inicial.
 
 
 ## DASHBOARD;
@@ -85,7 +88,7 @@ Exibição do painel de acordo com cada tipo de usuário:
 
 Foi realizada a permissão de somente o administrador adicionar, remover uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
 
-### *“pages/categorias/index.php”*
+### *“pages/categorias/index.php”* “api/categorias.php”
 
 Somente o administrador consegue publicar uma nova categoria;
 
@@ -95,8 +98,10 @@ Artista acrescenta uma obra no seu portfólio;
 
 ### *“api/portfolio.php”*
 
+Publicação e exclusão de uma obra no portfólio tendo tipos de arquivos como imagens, vídeos e áudios.
+
 Verifica se a obra realmente existe;
-Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que um artista altere a arte de outro.
+Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que um artista altere a arte de outro;
 
 ### *“api/mensagens.php”*
 
@@ -137,17 +142,6 @@ Consulta ao Banco de Dados, buscando registro no banco de dados utilizando filtr
 ### “api/encomendas.php”
 
 Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar, caso já tenha um, a mensagem irá mostrar que não foi possível concluir a ação.
-
-
-## PORTFOLIO/CATEGORIAS;
-
-### “api/portifolio.php”
-
-(???)
-
-### “api/categorias.php”
-
-(???)
 
 
 ## CHAT DE MENSAGENS E REDES SOCIAIS;
