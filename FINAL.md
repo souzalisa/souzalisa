@@ -28,124 +28,59 @@ Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de 
 
 *“api/usuarios.php”*
 
-*Busca de usuários*
-*Cadastro de usuários*
-*Atualizar usuários*
-*Suspensão de usuários*
-*Exclusão de usuários*
-
+	Busca de usuários;
+	Cadastro de usuários;
+	Atualizar usuários;
+	Suspensão de usuários;
+	Exclusão de usuários.
+	
 ## DASHBOARD
 
 *“private/dashboard”*
 
-Painel exibido para cada tipo de usuário:
+Exibição do painel de acordo com cada tipo de usuário:
 
+	Clientes (Card mostrando os pedidos que estão abertos);
 
-Clientes: 
+	Artistas (Comissões pendentes e vagas disponíveis);
 
-    <?php if ($tipoUsuario === 'contratador'): ?>
-        <div class="card">
-            <div class="card-label">Pedidos em aberto</div>
-            <div class="card-valor"><?= (int) $valores['pedidos'] ?></div>
-        </div>
-        <div class="card">
-            <div class="card-label">Orçamentos pendentes</div>
-            <div class="card-valor"><?= (int) $valores['pendentes'] ?></div>
-        </div>
-    <?php endif; ?>
+	Administrador (Quantidade de usuários cadastrados e denúncias abertas);
 
-
-Artistas:
-
-    <?php if ($tipoUsuario === 'artista'): ?>
-        <div class="card">
-            <div class="card-label">Comissões em andamento</div>
-            <div class="card-valor"><?= (int) $valores['andamento'] ?></div>
-        </div>
-        <div class="card">
-            <div class="card-label">Vagas disponíveis</div>
-            <div class="card-valor"><?= (int) $valores['vagas'] ?></div>
-        </div>
-    <?php endif; ?>
-
-
-Administrador: 
-
-    <?php if ($tipoUsuario === 'admin'): ?>
-        <div class="card">
-            <div class="card-label">Usuários cadastrados</div>
-            <div class="card-valor"><?= (int) $valores['usuarios'] ?></div>
-        </div>
-        <div class="card">
-            <div class="card-label">Denúncias abertas</div>
-            <div class="card-valor">0</div>
-        </div>
-    <?php endif; ?>
 
 ## FEATURE-LOGIN
 
 *“auth/login.php”*
 
+Foi acrescentado o acesso e bloqueio de conta do usuário. Se o e-mail ou a senha estiverem incorretos, aparecerá uma mensagem de erro e o usuário poderá tentar logar novamente apenas 5 vezes, caso ultrapasse disso, sua conta ficará bloqueada por 15 minutos.
 
-Limite para tentativas de login e tempo bloqueado:
+	Limite de 5 tentativas por login e 15 minutos de tempo bloqueado;
 
-    define('MAX_TENTATIVAS_LOGIN', 5);
-    define('MINUTOS_BLOQUEIO_TEMPORARIO', 15);
+	Processamento dos dados de e-mail e senha enviados pelo usuário;
 
+	Não aceita campos de e-mail e senha vazios.
 
-Campos de e-mail e senha:
+	Impedir que o usuário acesse a conta com: 
 
-    $email = trim($input['email'] ?? '');
-    $senha = trim($input['senha'] ?? '');
-
-
-Caso haja erros ao preencher os campos:
-
-      if (!$usuario) {
-        		http_response_code(401);
-        		echo json_encode(['erro' => 'E-mail ou senha incorretos.']);
-       		 exit;
-    	}
-
-
-Se a conta não estiver no status “ativo”: 
-
-    if ($usuario['status'] === 'inativo') {
-        		http_response_code(403);
-        		echo json_encode(['erro' => 'Esta conta está inativa. Fale com o suporte para reativá-la.']);
-        		exit;
-   	 }
-
-    if ($usuario['status'] === 'suspenso') {
-       		 http_response_code(403);
-        		echo json_encode(['erro' => 'Conta suspensa. Fale com o suporte.']);
-        		exit;
-  	  }
-
-
-Autenticação bem-sucedida: 
-
-    session_regenerate_id(true);
-      $_SESSION['id_usuario']   = $usuario['id'];
-      $_SESSION['nome']         = $usuario['nome'];
-      $_SESSION['email']        = $usuario['email'];
-      $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
-
-    echo json_encode(['sucesso' => true, 'mensagem' => 'Autenticado com sucesso.']);
+	E-mail e senha incorretos;
+	Conta inativa;
+	Conta suspensa;
+	Conta bloqueada, exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
+	
+	O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
 
 ## REDEFINIÇÃO DE SENHA
 
-*“pages/redefinir-senha.php”*
+	*“pages/redefinir-senha.php”*
 
 
 # CRUD Categorias e Portfólio
 
-Essa pasta contém a permissão de somente o administrador adicionar uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
+Foi realizada a permissão de somente o administrador adicionar, remover uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
 
 ## “pages/categorias/index.php”
 
-SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
+Somente o administrador consegue publicar uma nova categoria:
 
 
     <div class="cabecalho-pagina">
@@ -160,11 +95,9 @@ SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
     </div>
 
 
-
-
 ## “pages/portfolio/index.php”
 
- ARTISTA ACRESCENTA UMA OBRA NO SEU PERFIL
+Artista acrescenta uma obra no seu portfólio:
 
 
     <div class="cabecalho-pagina">
@@ -178,6 +111,7 @@ SOMENTE ADMIN CONSEGUE ACRESCENTAR UMA CATEGORIA
     		<?php endif; ?>
         
     </div>
+
 
 # Orçamento e status do trabalho
 
@@ -197,110 +131,83 @@ Já nessa página, no painel do criador, ele tem acesso aos orçamentos recebido
 
 ## “api/mensagens.php”
 
-* **Lista de conversas ordenadas por mais recente;**
+	* **Lista de conversas ordenadas por mais recente;**
   
 
-* **Histórico de conversas;**
+	* **Histórico de conversas;**
   
 
-* **Envio de mensagens;**
+	* **Envio de mensagens;**
  
 ## “pages/chat.php”
 
-Tela Front-End do chat de mensagens, sem lógica de php, apenas testes.
-
-
-
-**Exemplo (selecionando uma conversa para enviar uma mensagem):**
-
-
-            <section class="chat-painel">
-
-                        <div class="chat-painel__cabecalho" id="cabecalho-conversa">
-
-                                    <span class="estado-vazio">Selecione uma conversa ou busque alguém para começar.</span>
-
-                        </div>
-
-                        <div class="chat-mensagens" id="lista-mensagens"></div>
-
-                        <form class="chat-form" id="form-enviar-mensagem">
-
-                                    <input type="text" id="campo-mensagem" placeholder="Escreva uma mensagem..." maxlength="1000" disabled>
-
-                                    <button type="submit" class="botao botao--primario" id="btn-enviar-mensagem" disabled>Enviar</button>
-
-                        </form>
-
-            </section>
+Tela Front-End do chat de mensagens, permitindo selecionar uma conversa para enviar uma mensagem e procurar pelo nome do usuário.
 
 
 ## “api/redes_sociais.php”
 
-* **Lista de redes sociais;**
+	* **Lista de redes sociais;**
  
-* **Vínculo;**
+	* **Vínculo;**
 
-* **Atualização de link;**
+	* **Atualização de link;**
 
-* **Remoção do vínculo;**
+	* **Remoção do vínculo;**
 
-* **Validação das redes sociais do usuário;**
+	* **Validação das redes sociais do usuário;**
 
 
 ## “pages/perfil.php”
 
-Tela Front-End do perfil do usuário com formulário adicionando uma rede social.
+Tela Front-End do perfil com formulário adicionando uma rede social além de recomendações feitas por usuários no perfil de um artista e publicação de uma nova comissão na galeria.
 
-
-**Exemplo:**
-
-            <form id="form-rede" class="perfil-form-rede">
-
-                        <select id="rede-plataforma">
-
-                                    <?php foreach ($rotulosPlataforma as $valor => $rotulo): ?>
-
-                                                <option value="<?= $valor ?>"><?= $rotulo ?></option>
-
-                                    <?php endforeach; ?>
-
-                        </select>
-
-                        <input type="url" id="rede-link" placeholder="https://..." required>
-
-                        <button type="submit" class="botao botao--primario">Adicionar</button>
-
-            </form>           
 
 # Quadro encomendas
 
 Esse arquivo realiza o armazenamento de encomendas realizadas no site e o status de disponibilidade no Banco de Dados MySQL.
 
-## Front-End
-
 #### “public/catalogo.html”
-
 
 Estrutura da página do catálogo de artistas contendo quadro de encomendas (com link para o feed) e filtros avançados (ordenar por mais recentes, menor preço e maior preço).
 
 
-## Back-End
-
 #### “api/catalogo.php”
 
+Consulta ao Banco de Dados, buscando registro no banco de dados utilizando filtros por tags via método GET.
 
-Consulta ao Banco de Dados, buscando registro na tabela encomendas utilizando filtros via método GET.
+# Integridade do Orçamento/Encomenda
 
 
-    if (!empty($_GET['categoria'])) {
-    
-    $categoria = $_GET['categoria'];
-    
-    $sql = $sql . " AND categoria = '$categoria'";
-    
-    }
- 
+## “api/orcamentos.php”
+
+**Restrição de dois orçamentos idênticos**
+
+Verifica se há um orçamento duplicado antes de solicitar um novo.
+
+
+## “api/encomendas.php”
+
+Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar, caso já tenha um, a mensagem irá mostrar que não foi possível concluir a ação.
+
+
+# Permissões Cruzadas
+
+
+## “api/portfolio.php”
+
+Verifica se a obra realmente existe;
+
+Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que altere a arte de outro;
+
+
+## “api/redes_sociais.php”
+
+Caso a rede social não exista ou se não for do mesmo usuário, também retornará a mensagem.
+
+## “api/mensagens.php”
+
+Não permite que o usuário mande mensagem para ele mesmo e só será possível enviar a mensagem se conter um texto ou um anexo.
+
 
 # Estrutura do Banco de Dados
 
@@ -308,8 +215,6 @@ Consulta ao Banco de Dados, buscando registro na tabela encomendas utilizando fi
 
 
 Armazena o nome e a descrição de uma categoria publicada por um admin.
-    
-
     
     CREATE TABLE IF NOT EXISTS categorias (
 
@@ -322,12 +227,9 @@ Armazena o nome e a descrição de uma categoria publicada por um admin.
     ) ENGINE=InnoDB;
 
 
-
 ### -- Tabela portfólio
 
 Armazena os dados do artista e sua obra publicada em seu perfil
-
-
     
     CREATE TABLE IF NOT EXISTS portfolio_itens (
 
@@ -340,14 +242,11 @@ Armazena os dados do artista e sua obra publicada em seu perfil
     titulo VARCHAR(150) NOT NULL,
 
     arquivo VARCHAR(255) NOT NULL,
-
-
     
     
 ### -- Tipo de mídia
 
 Guarda o tipo de conteúdo publicado no portfólio do artista
-
 
 
     tipo_midia ENUM('imagem', 'video', 'audio') NOT NULL,
@@ -364,7 +263,6 @@ Guarda o tipo de conteúdo publicado no portfólio do artista
 
 Gerencia o processo de serviço entre compradores e artistas. Armazenando o id de quem compra e quem produz, texto explicando o que será feito, prazo para entrega e valor sugerido.
 
-    
     
     CREATE TABLE IF NOT EXISTS orcamentos (
 
@@ -411,12 +309,9 @@ Armazena o histórico de alterações de status do orçamento, exibindo a data q
 
     alterado_em   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-
 ### -- Tabela encomendas
 
 Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e entregar o produto final para o cliente:
-
-    
     
     CREATE TABLE IF NOT EXISTS encomendas (
 
@@ -431,272 +326,14 @@ Mostra o cliente que pediu, o que ele pediu e o prazo para o criador finalizar e
     descricao TEXT NOT NULL,
 
     prazo DATE NOT NULL,
-    
+
 
 ### -- Status e Integridade
 
 Status da encomenda que só é permitido nessas condições (aberto, em andamento, concluído e cancelado), valor em dinheiro e estilo que o cliente deseja:
-
-    
     
      status ENUM('aberto', 'em_andamento', 'concluido', 'cancelado') NOT NULL DEFAULT 'aberto',
 
     preco_medio DECIMAL(10,2) DEFAULT NULL,
 
     estilo VARCHAR(100) DEFAULT NULL,
-
-
-# Acesso e bloqueio de conta
-
-## Comstart-sprint3 “auth/login.php”
-
-
-Foi acrescentado o acesso e bloqueio de conta do usuário. Se o e-mail ou a senha estiverem incorretos, aparecerá uma mensagem de erro e o usuário poderá tentar logar novamente apenas 5 vezes, caso ultrapasse disso, sua conta ficará bloqueada por 15 minutos.
-
-
-**Tentativas de Login**
-
-
-    define('MAX_TENTATIVAS_LOGIN', 5);
-    define('MINUTOS_BLOQUEIO_TEMPORARIO', 15);
-
-
-**Validação de E-mail e Senha**
-
-
-Não aceita campos de e-mail e senha vazios.
-
-
-	$input = json_decode(file_get_contents('php://input'), true) ?? [];
-    $email = trim($input['email'] ?? '');
-    $senha = trim($input['senha'] ?? '');
-
-    if ($email === '' || $senha === '') {
-    		http_response_code(400);
-   		 echo json_encode(['erro' => 'Preencha todos os campos.']);
-    		exit;
-    }
-
-
-**Busca de usuários no Banco de Dados**
-
-
-    $pdo = getConnection();
-   	$stmt = $pdo->prepare(
-       		 'SELECT id, nome, email, senha_hash, tipo_usuario, status, tentativas_login, bloqueado_ate
-         		FROM usuarios WHERE email = ? LIMIT 1'
-    	);
-    	$stmt->execute([$email]);
-    	$usuario = $stmt->fetch();
-
-**Usuário não encontrado**
-
-
-    if (!$usuario) {
-        		http_response_code(401);
-        		echo json_encode(['erro' => 'E-mail ou senha incorretos.']);
-        		exit;
-    	}
-
-
-**Inatividade**
-
-Não será possível logar se a conta estiver inativa ou suspensa
-
-
-    if ($usuario['status'] === 'inativo') {
-        		http_response_code(403);
-        		echo json_encode(['erro' => 'Esta conta está inativa. Fale com o suporte para reativá-la.']);
-        		exit;
-   	 }
-
-    	if ($usuario['status'] === 'suspenso') {
-        		http_response_code(403);
-        		echo json_encode(['erro' => 'Conta suspensa. Fale com o suporte.']);
-        		exit;
-    	}
-
-
-**Bloqueio**
-
-Exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
-
-    if ($usuario['bloqueado_ate'] !== null && strtotime($usuario['bloqueado_ate']) > time()) {
-        		$minutosRestantes = (int) ceil((strtotime($usuario['bloqueado_ate']) - time()) / 60);
-        		http_response_code(423);
-        		echo json_encode([
-            		'erro' => "Conta bloqueada temporariamente por excesso de tentativas. Tente novamente em {$minutosRestantes} minuto(s)."
-       		 ]);
-        		exit;
-    	}
-
-
-
-
-**Senha correta**
-
-O usuário consegue logar se colocar a senha certa
-
-    $stmtReset = $pdo->prepare(
-        		'UPDATE usuarios SET tentativas_login = 0, bloqueado_ate = NULL WHERE id = :id'
-   	 );
-   	 $stmtReset->execute(['id' => $usuario['id']]);
-
-    	session_regenerate_id(true);
-    	$_SESSION['id_usuario']   = $usuario['id'];
-    	$_SESSION['nome']         = $usuario['nome'];
-    	$_SESSION['email']        = $usuario['email'];
-    	$_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
-
-    	echo json_encode(['sucesso' => true, 'mensagem' => 'Autenticado com sucesso.']);
-
-
-
-# Integridade do Orçamento/Encomenda
-
-
-## “api/orcamentos.php”
-
-**Restrição de dois orçamentos idênticos**
-
-Verifica se há um orçamento duplicado antes de solicitar um novo
-
-    $sqlDuplicado = 'SELECT id FROM orcamentos
-                     WHERE contratador_id = :contratador_id
-                       AND artista_id = :artista_id
-                       AND status_orcamento = "pendente"
-                       AND (
-                           LOWER(TRIM(escopo)) = LOWER(TRIM(:escopo))
-                           OR (:encomenda_id IS NOT NULL AND encomenda_id = :encomenda_id_check)
-                       )
-                     LIMIT 1';
-    $stmtDuplicado = $pdo->prepare($sqlDuplicado);
-    $stmtDuplicado->execute([
-        'contratador_id'     => $usuarioLogado['id_usuario'],
-        'artista_id'         => $artistaId,
-        'escopo'             => $escopo,
-        'encomenda_id'       => $encomendaId,
-        'encomenda_id_check' => $encomendaId,
-    ]);
-
-
-## “api/encomendas.php”
-
-Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar, caso já tenha um, a mensagem irá mostrar que não foi possível concluir a ação.
-
-$stmtOrc = $pdo->prepare(
-        'SELECT id FROM orcamentos WHERE encomenda_id = :encomenda_id AND status_orcamento = "aceito" LIMIT 1'
-);
-$stmtOrc->execute(['encomenda_id' => $id]);
-if ($stmtOrc->fetch()) {
-        respostaJson([
-       	 'sucesso' => false,
-       	 'mensagem' => 'Não é possível alterar ou cancelar esta encomenda, pois ela já possui um orçamento aceito vinculado.'
-        ], 409);
-}
-
-
-# Permissões Cruzadas
-
-## “api/categorias.php”
-
-Para excluir uma categoria, somente o administrador tem a permissão:
-
-    function tratarDelete(PDO $pdo): void
-      {
-    		exigirTipo('admin');
-
-   	 	if (!isset($_GET['id'])) {
-        			respostaJson(['sucesso' => false, 'mensagem' => 'Informe o id da categoria na URL.'], 400);
-    		}
-
-   		 $id = (int) $_GET['id'];
-
-
-Caso haja algum vínculo de portfólio ou encomendas na categoria, a exclusão é bloqueada retornando uma mensagem:
-
-      if ($totalObras > 0 || $totalEncomendas > 0) {
-        		respostaJson([
-            		'sucesso' => false,
-           		'mensagem' => 'Não é possível excluir esta categoria: existem '
-            		    	. $totalObras . ' obra(s) de portfólio e ' . $totalEncomendas
-                			. ' encomenda(s) vinculadas a ela.',
-        		], 409);
-    	}
-
-Se não houver vínculo, a exclusão é realizada com sucesso:
-
-      $stmt = $pdo->prepare('DELETE FROM categorias WHERE id = :id');
-    	$stmt->execute(['id' => $id]);
-
-    	respostaJson(['sucesso' => true, 'mensagem' => 'Categoria excluída com sucesso.']);
-    }
-
-
-## “api/portfolio.php”
-
-Verifica se a obra realmente existe:
-
-
-    function buscarItemDoArtista(PDO $pdo, int $id, int $artistaId): array
-      {
-   		 $stmt = $pdo->prepare('SELECT * FROM portfolio_itens WHERE id = :id');
- 		   $stmt->execute(['id' => $id]);
-   		 $item = $stmt->fetch();
-
-    		if (!$item) {
-        		respostaJson(['sucesso' => false, 'mensagem' => 'Obra não encontrada.'], 404);
-   		 }
-
-
-
-Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que altere a arte de outro:
-
-
-
-        if ((int) $item['artista'] !== $artistaId) {
-        			respostaJson(['sucesso' => false, 'mensagem' => 'Essa obra não pertence a você.'], 403);
-    		}
-
-   		 return $item;
-      }
-
-
-
-## “api/redes_sociais.php”
-
-Caso a rede social não exista ou se não for do mesmo usuário, também retornará a mensagem:
-
-      if (!$rede) {
-        		respostaJson(['sucesso' => false, 'mensagem' => 'Rede social não encontrada.'], 404);
-    	}
-
-   	 if ((int) $rede['usuario_id'] !== $usuarioId) {
-       		 respostaJson(['sucesso' => false, 'mensagem' => 'Essa rede social não pertence a você.'], 403);
-    	}
-
-
-
-## “api/mensagens.php”
-
-Não permite que o usuário mande mensagem para ele mesmo e só será possível enviar a mensagem se conter um texto ou um anexo:
-
-    if ($destinatarioId === $usuarioId) {
-        		respostaJson(['sucesso' => false, 'mensagem' => 'Não é possível enviar mensagem para si mesmo.'], 422);
-   	 }
-
-    	if ($conteudo === '' && $anexo === '') {
-        		respostaJson(['sucesso' => false, 'mensagem' => 'A mensagem precisa ter um texto ou um anexo.'], 422);
-   	 }
-
-
-
-# Fiscal de Vagas do Artista
-
-## “api/orcamentos.php”
-
-
-Regra: artista define um número máximo de comissões simultâneas; o sistema bloqueia aceitar um novo orçamento se ele já estiver no limite (nem deixa nem o botão aparecer no front, nem aceita a requisição no back) Onde entra: api/orcamentos.php (ação "responder"), tabela usuarios ou uma nova coluna/tabela de capacidade 
-
-
-
