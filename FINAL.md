@@ -66,8 +66,11 @@ O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 * **pages/redefinir-senha.php**
 
 		Não permite redefinir senha sem ter uma conta criada;
+  
 		Mínimo de caracteres para criar uma senha;
+  
 		Confere se as senhas coincidem;
+  
 		Alteração bem-sucedida da senha, voltando para o formulário inicial.
 
 
@@ -97,6 +100,7 @@ Foi realizada a permissão de somente o administrador adicionar, remover uma cat
 		Publicação e exclusão de uma obra no portfólio tendo tipos de arquivos como imagens, vídeos e áudios.
 		
 		Verifica se a obra realmente existe;
+  
 		Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que um artista altere a arte de outro;
 
 * **api/mensagens.php** -> Não permite que o usuário mande mensagem para ele mesmo e somente será possível enviar a mensagem se conter um texto ou um anexo.
