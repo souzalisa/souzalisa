@@ -41,7 +41,7 @@ Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de 
 
 ## LOGIN;
 
-### *“auth/login.php”*
+* “auth/login.php”*
 
 Foi acrescentado o acesso e bloqueio de conta do usuário. Se o e-mail ou a senha estiverem incorretos, aparecerá uma mensagem de erro e o usuário poderá tentar logar novamente apenas 5 vezes, caso ultrapasse disso, sua conta ficará bloqueada por 15 minutos.
 
