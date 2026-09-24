@@ -27,17 +27,17 @@ Acesse: ‘http://localhost/Comstart’.
 
 Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de usuários (clientes/artistas). Além disso, realiza a conexão com o Banco de Dados para que o CRUD funcione corretamente com os dados dos usuários. 
 
-*“api/usuarios.php”*
+* “api/usuarios.php”
 
-	Busca de usuários;
-	
-	Cadastro de usuários;
-	
-	Atualizar usuários;
-	
-	Suspensão de usuários;
-	
-	Exclusão de usuários.
+		Busca de usuários;
+		
+		Cadastro de usuários;
+		
+		Atualizar usuários;
+		
+		Suspensão de usuários;
+		
+		Exclusão de usuários.
 
 ## LOGIN;
 
