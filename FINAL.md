@@ -1,4 +1,4 @@
-#Comstart
+# Comstart
 
 Comstart é uma plataforma que tem o objetivo de auxiliar os Microempreendedores Individuais a divulgarem seus produtos e serviços, podendo criar anúncios para atrair interesse por outras pessoas e esse projeto pode ser acessado por clientes e artistas.
 
