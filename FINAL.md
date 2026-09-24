@@ -53,15 +53,15 @@ Não aceita campos de e-mail e senha vazios.
 
 Impede que o usuário acesse a conta com: 
 
-	* E-mail e senha incorretos;
+	E-mail e senha incorretos;
 	
-	* Conta inativa;
+	Conta inativa;
 	
-	* Conta suspensa;
+	Conta suspensa;
 	
-	* Conta bloqueada, exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
+	Conta bloqueada, exibe uma mensagem afirmando que a conta está bloqueada por excesso de tentativas.
 		
-	* O usuário conseguirá logar se preencher o e-mail e senha corretamente.
+O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
 ### *“pages/redefinir-senha.php”*
 
@@ -154,13 +154,13 @@ Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar,
 
 ### “api/mensagens.php”
 
-* **Lista de conversas ordenadas por mais recente;**
-  
-
-* **Histórico de conversas;**
-  
-
-* **Envio de mensagens;**
+	Lista de conversas ordenadas por mais recente;
+	  
+	
+	Histórico de conversas;
+	  
+	
+	Envio de mensagens;
  
 ### “pages/chat.php”
 
@@ -169,15 +169,15 @@ Tela Front-End do chat de mensagens, permitindo selecionar uma conversa para env
 
 ### “api/redes_sociais.php”
 
-* **Lista de redes sociais;**
- 
-* **Vínculo;**
-
-* **Atualização de link;**
-
-* **Remoção do vínculo;**
-
-* **Validação das redes sociais do usuário;**
+	Lista de redes sociais;
+	 
+	Vínculo;
+	
+	Atualização de link;
+	
+	Remoção do vínculo;
+	
+	Validação das redes sociais do usuário;
 
 
 ### “pages/perfil.php”
