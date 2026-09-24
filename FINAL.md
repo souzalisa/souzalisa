@@ -27,7 +27,7 @@ Acesse: ‘http://localhost/Comstart’.
 
 Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de usuários (clientes/artistas). Além disso, realiza a conexão com o Banco de Dados para que o CRUD funcione corretamente com os dados dos usuários. 
 
-* api/usuarios.php
+* **api/usuarios.php**
 
 		Busca de usuários;
 		
@@ -41,7 +41,7 @@ Foi implementado o CRUD, ou seja, o cadastro, exclusão, edição e consulta de 
 
 ## LOGIN;
 
-* auth/login.php
+* **auth/login.php**
 
 Foi acrescentado o acesso e bloqueio de conta do usuário. Se o e-mail ou a senha estiverem incorretos, aparecerá uma mensagem de erro e o usuário poderá tentar logar novamente apenas 5 vezes, caso ultrapasse disso, sua conta ficará bloqueada por 15 minutos.
 
@@ -63,7 +63,7 @@ Impede que o usuário acesse a conta com:
 		
 O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
-* pages/redefinir-senha.php
+* **pages/redefinir-senha.php**
 
 		Não permite redefinir senha sem ter uma conta criada;
 		Mínimo de caracteres para criar uma senha;
@@ -73,7 +73,7 @@ O usuário conseguirá logar se preencher o e-mail e senha corretamente.
 
 ## DASHBOARD;
 
-* private/dashboard
+* **private/dashboard**
 
 Exibição do painel de acordo com cada tipo de usuário:
 
@@ -88,24 +88,24 @@ Exibição do painel de acordo com cada tipo de usuário:
 
 Foi realizada a permissão de somente o administrador adicionar, remover uma categoria e a permissão para o artista publicar sua obra no seu portfólio.
 
-* pages/categorias/index.php
+* **pages/categorias/index.php**
   
-* api/categorias.php
+* **api/categorias.php**
 
 Somente o administrador consegue publicar uma nova categoria;
 
-*pages/portfolio/index.php 
+* **pages/portfolio/index.php**
 
 Artista acrescenta uma obra no seu portfólio;
 
-* api/portfolio.php
+* **api/portfolio.php**
 
 		Publicação e exclusão de uma obra no portfólio tendo tipos de arquivos como imagens, vídeos e áudios.
 		
 		Verifica se a obra realmente existe;
 		Logo em seguida, caso a obra exista e o artista não for o mesmo usuário autenticado, impedirá que um artista altere a arte de outro;
 
-* api/mensagens.php
+* **api/mensagens.php**
 
 Não permite que o usuário mande mensagem para ele mesmo e somente será possível enviar a mensagem se conter um texto ou um anexo.
 
@@ -114,15 +114,15 @@ Não permite que o usuário mande mensagem para ele mesmo e somente será possí
 Orçamento entre o artista e o cliente, controlando desde o pedido inicial até a entrega final.
 
 
-* pages/dashboard/client/orcamentos.php
+* **pages/dashboard/client/orcamentos.php**
 
 Essa página permite que o cliente envie e verifique seus pedidos de orçamento para os artistas, descrevendo o que deseja.
 
-* pages/dashboard/creator/orcamentos.php
+* **pages/dashboard/creator/orcamentos.php**
 
 Já nessa página, no painel do criador, ele tem acesso aos orçamentos recebidos, seu portfólio e suas comissões, podendo aceitar ou recusar pedidos enviados por contratadores.
 
-* api/orcamentos.php
+* **api/orcamentos.php**
 
 **Restrição de dois orçamentos idênticos**
 
@@ -133,22 +133,22 @@ Verifica se há um orçamento duplicado antes de solicitar um novo.
 
 Armazenamento de encomendas realizadas no site e o status de disponibilidade no Banco de Dados MySQL.
 
-* public/catalogo.html
+* **public/catalogo.html**
 
 Estrutura da página do catálogo de artistas contendo quadro de encomendas (com link para o feed) e filtros avançados (ordenar por mais recentes, menor preço e maior preço).
 
-* api/catalogo.php
+* **api/catalogo.php**
 
 Consulta ao Banco de Dados, buscando registro no banco de dados utilizando filtros por tags via método GET.
 
-* api/encomendas.php
+* **api/encomendas.php**
 
 Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar, caso já tenha um, a mensagem irá mostrar que não foi possível concluir a ação.
 
 
 ## CHAT DE MENSAGENS E REDES SOCIAIS;
 
-* api/mensagens.php
+* **api/mensagens.php**
 
 		Lista de conversas ordenadas por mais recente;
 		  
@@ -158,12 +158,12 @@ Verifica se uma encomenda já possui um orçamento aceito antes mesmo de editar,
 		
 		Envio de mensagens;
  
-* pages/chat.php
+* **pages/chat.php**
 
 Tela Front-End do chat de mensagens, permitindo selecionar uma conversa para enviar uma mensagem e procurar pelo nome do usuário.
 
 
-* api/redes_sociais.php
+* **api/redes_sociais.php**
 
 		Lista de redes sociais;
 		 
@@ -176,7 +176,7 @@ Tela Front-End do chat de mensagens, permitindo selecionar uma conversa para env
 		Validação das redes sociais do usuário;
 
 
-* pages/perfil.php
+* **pages/perfil.php**
 
 Tela Front-End do perfil com formulário adicionando uma rede social além de recomendações feitas por usuários no perfil de um artista e publicação de uma nova comissão na galeria.
 
