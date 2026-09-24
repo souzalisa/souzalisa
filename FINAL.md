@@ -2,13 +2,13 @@
 
 Comstart é uma plataforma que tem o objetivo de auxiliar os Microempreendedores Individuais a divulgarem seus produtos e serviços, podendo criar anúncios para atrair interesse por outras pessoas e esse projeto pode ser acessado por clientes e artistas.
 
-*Como instalar e rodar*
+### *Como instalar e rodar*
 
 Ferramentas necessárias:
 
-XAMPP (para php e MySQL);
+	XAMPP (para php e MySQL);
 
-Git (para clonar o repositório).
+	Git (para clonar o repositório).
 
 Através do botão “code”, copie a URL do repositório (HTTPS), em seguida, abra o terminal de comando (ou git bash) e execute: “git clone” junto com a URL copiada.
 
